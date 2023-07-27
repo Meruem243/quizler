@@ -37,6 +37,24 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
+  List<String> questions = [
+    'Sun sets in west?',
+    'London is capital of Austria?',
+    '9-11 incident happened on September 11 1995?',
+    'An apple per day really keeps doctor away for whole year?',
+  ];
+  int quesNum = 0;
+  // List<Widget> txt = [
+  //   const Text(
+  //     'This is where my Question will be displayed',
+  //     textAlign: TextAlign.center,
+  //     style: TextStyle(
+  //       color: Colors.cyanAccent,
+  //       fontWeight: FontWeight.bold,
+  //       fontSize: 25.0,
+  //     ),
+  //   ),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +62,20 @@ class _QuizPageState extends State<QuizPage> {
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        const Expanded(
+        Expanded(
           flex: 5,
           child: Center(
             child: Text(
-              'This is where my Question will be displayed',
+              questions[quesNum],
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.cyanAccent,
                 fontWeight: FontWeight.bold,
                 fontSize: 25.0,
               ),
             ),
+
+            // child: txt[0],
           ),
         ),
         Expanded(
@@ -71,6 +91,7 @@ class _QuizPageState extends State<QuizPage> {
                       color: Colors.green,
                     ),
                   );
+                  quesNum++;
                 });
               },
               color: Colors.green,
@@ -99,6 +120,7 @@ class _QuizPageState extends State<QuizPage> {
                       color: Colors.red,
                     ),
                   );
+                  quesNum++;
                 });
               },
               color: Colors.red,
