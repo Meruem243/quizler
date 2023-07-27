@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'questions.dart';
 
 void main() {
   runApp(const Quizler());
@@ -37,18 +38,28 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  List<String> questions = [
-    'Sun sets in west?',
-    'London is capital of Austria?',
-    '9-11 incident happened on September 11 1995?',
-    'An apple per day really keeps doctor away for whole year?',
-  ];
   int quesNum = 0;
-  List<bool> answerResult = [
-    true,
-    false,
-    false,
-    true,
+
+  // List<String> questions = [
+  //   'Sun sets in west?',
+  //   'London is capital of Austria?',
+  //   '9-11 incident happened on September 11 1995?',
+  //   'An apple per day really keeps doctor away for whole year?',
+  // ];
+  // List<bool> answerResult = [
+  //   true,
+  //   false,
+  //   false,
+  //   true,
+  // ];
+
+  List<Questions> quesBank = [
+    Questions(ques: 'Sun sets in west?', ans: true),
+    Questions(ques: 'London is capital of Austria?', ans: false),
+    Questions(ques: '9-11 incident happened on September 11 1995?', ans: false),
+    Questions(
+        ques: 'An apple per day really keeps doctor away for whole year?',
+        ans: true),
   ];
   // List<Widget> txt = [
   //   const Text(
@@ -72,7 +83,7 @@ class _QuizPageState extends State<QuizPage> {
           flex: 5,
           child: Center(
             child: Text(
-              questions[quesNum],
+              quesBank[quesNum].questionText,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.cyanAccent,
@@ -90,7 +101,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
-                bool answerCheck = answerResult[quesNum];
+                bool answerCheck = quesBank[quesNum].answr;
                 if (answerCheck == true) {
                   print('user got it right quesNUM : $quesNum');
                 } else {
@@ -126,7 +137,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
-                bool answerCheck = answerResult[quesNum];
+                bool answerCheck = quesBank[quesNum].answr;
 
                 if (answerCheck == false) {
                   print('user got it right quesNUM : $quesNum');
