@@ -44,6 +44,12 @@ class _QuizPageState extends State<QuizPage> {
     'An apple per day really keeps doctor away for whole year?',
   ];
   int quesNum = 0;
+  List<bool> answerResult = [
+    true,
+    false,
+    false,
+    true,
+  ];
   // List<Widget> txt = [
   //   const Text(
   //     'This is where my Question will be displayed',
@@ -84,6 +90,12 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
+                bool answerCheck = answerResult[quesNum];
+                if (answerCheck == true) {
+                  print('user got it right quesNUM : $quesNum');
+                } else {
+                  print('user got it wrong quesNUM : $quesNum');
+                }
                 setState(() {
                   scoreKeeper.add(
                     const Icon(
@@ -91,6 +103,7 @@ class _QuizPageState extends State<QuizPage> {
                       color: Colors.green,
                     ),
                   );
+
                   quesNum++;
                 });
               },
@@ -113,6 +126,13 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
+                bool answerCheck = answerResult[quesNum];
+
+                if (answerCheck == false) {
+                  print('user got it right quesNUM : $quesNum');
+                } else {
+                  print('user got it wrong quesNUM : $quesNum');
+                }
                 setState(() {
                   scoreKeeper.add(
                     const Icon(
