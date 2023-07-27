@@ -11,12 +11,12 @@ class Quizler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.teal[900],
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          backgroundColor: Colors.teal,
+          backgroundColor: Colors.teal[900],
           title: const Text('Quiz Time'),
           titleTextStyle: const TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 30.0,
           ),
@@ -36,6 +36,8 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Icon> scoreKeeper = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -61,8 +63,17 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
-              onPressed: () {},
-              color: Colors.red,
+              onPressed: () {
+                setState(() {
+                  scoreKeeper.add(
+                    const Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ),
+                  );
+                });
+              },
+              color: Colors.green,
               child: const Text(
                 'True',
                 style: TextStyle(
@@ -80,8 +91,17 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
-              onPressed: () {},
-              color: Colors.blue,
+              onPressed: () {
+                setState(() {
+                  scoreKeeper.add(
+                    const Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ),
+                  );
+                });
+              },
+              color: Colors.red,
               child: const Text(
                 'False',
                 style: TextStyle(
@@ -92,6 +112,9 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
           ),
+        ),
+        Row(
+          children: scoreKeeper,
         ),
         const SizedBox(height: 10.0),
       ],
