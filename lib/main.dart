@@ -62,16 +62,19 @@ class _QuizPageState extends State<QuizPage> {
         questions.nextQues();
       });
     } else {
+      // int crtCount =0;
+      int totalCount = scoreKeeper.length;
+      int crtCount = scoreKeeper.where((i) => i.icon == Icons.check).length;
       Alert(
         context: context,
         title: 'END OF QUIZ',
-        content: const Column(
+        content: Column(
           children: [
-            SizedBox(
+            const SizedBox(
                 height: 20.0), // this will add a vertical space of 20 pixels
             Text(
-              "You did score of : ",
-              style: TextStyle(
+              ' You did score of : $crtCount out of $totalCount ',
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -92,7 +95,7 @@ class _QuizPageState extends State<QuizPage> {
         buttons: [
           DialogButton(
             onPressed: () {
-              debugPrint("Cool af Button pressed");
+              // debugPrint("Cool af Button pressed");
               setState(() {
                 questions.reSet();
                 scoreKeeper = [];
