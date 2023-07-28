@@ -39,4 +39,15 @@ class QuesBrain {
       _quesNum++;
     }
   }
+
+  int _chkToIcons = 0;
+  bool checkToAddIcon() {
+    if (_chkToIcons < _quesBank.length) {
+      _chkToIcons++;
+
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

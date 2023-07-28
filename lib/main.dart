@@ -39,6 +39,29 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
+
+  void checkAnswers(bool answer) {
+    if (questions.checkToAddIcon()) {
+      setState(() {
+        if (answer == questions.getCrtAns()) {
+          scoreKeeper.add(
+            const Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+          );
+        } else {
+          scoreKeeper.add(
+            const Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          );
+        }
+        questions.nextQues();
+      });
+    }
+  }
   // int quesNum = 0;
 
   // List<String> questions = [
@@ -96,22 +119,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
-                bool answerCheck = questions.getCrtAns();
-                if (answerCheck == true) {
-                  print('user got it right ');
-                } else {
-                  print('user got it wrong ');
-                }
-                setState(() {
-                  scoreKeeper.add(
-                    const Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ),
-                  );
-
-                  questions.nextQues();
-                });
+                checkAnswers(true);
               },
               color: Colors.green,
               child: const Text(
@@ -132,22 +140,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
-                bool answerCheck = questions.getCrtAns();
-
-                if (answerCheck == false) {
-                  print('user got it right ');
-                } else {
-                  print('user got it wrong ');
-                }
-                setState(() {
-                  scoreKeeper.add(
-                    const Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ),
-                  );
-                  questions.nextQues();
-                });
+                checkAnswers(false);
               },
               color: Colors.red,
               child: const Text(
