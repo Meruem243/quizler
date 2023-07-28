@@ -39,7 +39,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  int quesNum = 0;
+  // int quesNum = 0;
 
   // List<String> questions = [
   //   'Sun sets in west?',
@@ -78,7 +78,7 @@ class _QuizPageState extends State<QuizPage> {
           flex: 5,
           child: Center(
             child: Text(
-              questions.quesBank[quesNum].questionText,
+              questions.getQuesTxt(),
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.cyanAccent,
@@ -96,11 +96,11 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
-                bool answerCheck = questions.quesBank[quesNum].answr;
+                bool answerCheck = questions.getCrtAns();
                 if (answerCheck == true) {
-                  print('user got it right quesNUM : $quesNum');
+                  print('user got it right ');
                 } else {
-                  print('user got it wrong quesNUM : $quesNum');
+                  print('user got it wrong ');
                 }
                 setState(() {
                   scoreKeeper.add(
@@ -110,7 +110,7 @@ class _QuizPageState extends State<QuizPage> {
                     ),
                   );
 
-                  quesNum++;
+                  questions.nextQues();
                 });
               },
               color: Colors.green,
@@ -132,12 +132,12 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: MaterialButton(
               onPressed: () {
-                bool answerCheck = questions.quesBank[quesNum].answr;
+                bool answerCheck = questions.getCrtAns();
 
                 if (answerCheck == false) {
-                  print('user got it right quesNUM : $quesNum');
+                  print('user got it right ');
                 } else {
-                  print('user got it wrong quesNUM : $quesNum');
+                  print('user got it wrong ');
                 }
                 setState(() {
                   scoreKeeper.add(
@@ -146,7 +146,7 @@ class _QuizPageState extends State<QuizPage> {
                       color: Colors.red,
                     ),
                   );
-                  quesNum++;
+                  questions.nextQues();
                 });
               },
               color: Colors.red,

@@ -1,7 +1,8 @@
 import 'questions.dart';
 
 class QuesBrain {
-  List<Questions> quesBank = [
+  int _quesNum = 0;
+  final List<Questions> _quesBank = [
     Questions(ques: 'Sun sets in west?', ans: true),
     Questions(ques: 'London is capital of Austria?', ans: false),
     Questions(ques: '9-11 incident happened on September 11 1995?', ans: false),
@@ -24,4 +25,18 @@ class QuesBrain {
             'Albert Einstein won the Nobel Prize for his theory of relativity',
         ans: true),
   ];
+
+  String getQuesTxt() {
+    return _quesBank[_quesNum].questionText;
+  }
+
+  bool getCrtAns() {
+    return _quesBank[_quesNum].answr;
+  }
+
+  void nextQues() {
+    if (_quesNum < _quesBank.length - 1) {
+      _quesNum++;
+    }
+  }
 }
