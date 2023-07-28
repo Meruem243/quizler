@@ -2,6 +2,8 @@ import 'questions.dart';
 
 class QuesBrain {
   int _quesNum = 0;
+  int _chkToIcons = 0;
+
   final List<Questions> _quesBank = [
     Questions(ques: 'Sun sets in west?', ans: true),
     Questions(ques: 'London is capital of Austria?', ans: false),
@@ -40,14 +42,17 @@ class QuesBrain {
     }
   }
 
-  int _chkToIcons = 0;
-  bool checkToAddIcon() {
+  bool isFinished() {
     if (_chkToIcons < _quesBank.length) {
       _chkToIcons++;
-
       return true;
     } else {
       return false;
     }
+  }
+
+  void reSet() {
+    _quesNum = 0;
+    _chkToIcons = 0;
   }
 }

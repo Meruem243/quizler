@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'questions.dart';
 import 'quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() {
   runApp(const Quizler());
@@ -41,7 +42,7 @@ class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
   void checkAnswers(bool answer) {
-    if (questions.checkToAddIcon()) {
+    if (questions.isFinished()) {
       setState(() {
         if (answer == questions.getCrtAns()) {
           scoreKeeper.add(
@@ -60,6 +61,53 @@ class _QuizPageState extends State<QuizPage> {
         }
         questions.nextQues();
       });
+    } else {
+      Alert(
+        context: context,
+        title: 'END OF QUIZ',
+        content: const Column(
+          children: [
+            SizedBox(
+                height: 20.0), // this will add a vertical space of 20 pixels
+            Text(
+              "You did score of : ",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        style: const AlertStyle(
+          titleStyle: TextStyle(
+            color: Colors.white, // this will change the title text color to red
+          ),
+          // descStyle: TextStyle(
+          //   color: Colors.white, // this will change the desc text color to blue
+          // ),
+          isCloseButton: false,
+          isOverlayTapDismiss: false,
+          backgroundColor: Colors.black,
+        ),
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              debugPrint("Cool af Button pressed");
+              setState(() {
+                questions.reSet();
+                scoreKeeper = [];
+              });
+              Navigator.pop(context);
+            },
+            color: Colors.teal[900],
+            radius: BorderRadius.circular(20.0),
+            child: const Text(
+              "Reset Quiz",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ),
+        ],
+      ).show();
     }
   }
   // int quesNum = 0;
