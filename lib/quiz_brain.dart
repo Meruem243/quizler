@@ -5,27 +5,34 @@ class QuesBrain {
   int _chkToIcons = 0;
 
   final List<Questions> _quesBank = [
-    Questions(ques: 'Sun sets in west?', ans: true),
-    Questions(ques: 'London is capital of Austria?', ans: false),
-    Questions(ques: '9-11 incident happened on September 11 1995?', ans: false),
+    Questions(questionText: 'Sun sets in west?', answr: true),
+    Questions(questionText: 'London is capital of Austria?', answr: false),
     Questions(
-        ques: 'An apple per day really keeps doctor away for whole year?',
-        ans: true),
-    Questions(ques: 'The capital of India is Mumbai', ans: false),
-    Questions(ques: 'The Sun is a star', ans: true),
-    Questions(ques: 'Water boils at 100°C at sea level.', ans: true),
+        questionText: '9-11 incident happened on September 11 1995?',
+        answr: false),
     Questions(
-        ques: 'The largest bone in the human body is the femur.', ans: true),
-    Questions(ques: 'The moon has no gravity', ans: false),
-    Questions(ques: 'A rhombus is a type of rectangle.', ans: false),
+        questionText:
+            'An apple per day really keeps doctor away for whole year?',
+        answr: true),
+    Questions(questionText: 'The capital of India is Mumbai', answr: false),
+    Questions(questionText: 'The Sun is a star', answr: true),
+    Questions(questionText: 'Water boils at 100°C at sea level.', answr: true),
     Questions(
-        ques: 'Mercury is the hottest planet in the solar system', ans: false),
-    Questions(ques: 'The Nile is the longest river in the world', ans: true),
-    Questions(ques: 'Dogs can see Colors', ans: true),
+        questionText: 'The largest bone in the human body is the femur.',
+        answr: true),
+    Questions(questionText: 'The moon has no gravity', answr: false),
+    Questions(questionText: 'A rhombus is a type of rectangle.', answr: false),
     Questions(
-        ques:
+        questionText: 'Mercury is the hottest planet in the solar system',
+        answr: false),
+    Questions(
+        questionText: 'The Nile is the longest river in the world',
+        answr: true),
+    Questions(questionText: 'Dogs can see Colors', answr: true),
+    Questions(
+        questionText:
             'Albert Einstein won the Nobel Prize for his theory of relativity',
-        ans: true),
+        answr: true),
   ];
 
   String getQuesTxt() {

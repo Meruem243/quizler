@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'questions.dart';
 import 'quiz_brain.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -40,6 +39,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
+  QuesBrain questions = QuesBrain();
 
   void checkAnswers(bool answer) {
     if (questions.isFinished()) {
@@ -62,7 +62,6 @@ class _QuizPageState extends State<QuizPage> {
         questions.nextQues();
       });
     } else {
-      // int crtCount =0;
       int totalCount = scoreKeeper.length;
       int crtCount = scoreKeeper.where((i) => i.icon == Icons.check).length;
       Alert(
@@ -70,8 +69,7 @@ class _QuizPageState extends State<QuizPage> {
         title: 'END OF QUIZ',
         content: Column(
           children: [
-            const SizedBox(
-                height: 20.0), // this will add a vertical space of 20 pixels
+            const SizedBox(height: 20.0),
             Text(
               ' You did score of : $crtCount out of $totalCount ',
               style: const TextStyle(
@@ -83,11 +81,8 @@ class _QuizPageState extends State<QuizPage> {
         ),
         style: const AlertStyle(
           titleStyle: TextStyle(
-            color: Colors.white, // this will change the title text color to red
+            color: Colors.white,
           ),
-          // descStyle: TextStyle(
-          //   color: Colors.white, // this will change the desc text color to blue
-          // ),
           isCloseButton: false,
           isOverlayTapDismiss: false,
           backgroundColor: Colors.black,
@@ -95,7 +90,6 @@ class _QuizPageState extends State<QuizPage> {
         buttons: [
           DialogButton(
             onPressed: () {
-              // debugPrint("Cool af Button pressed");
               setState(() {
                 questions.reSet();
                 scoreKeeper = [];
@@ -113,39 +107,10 @@ class _QuizPageState extends State<QuizPage> {
       ).show();
     }
   }
-  // int quesNum = 0;
-
-  // List<String> questions = [
-  //   'Sun sets in west?',
-  //   'London is capital of Austria?',
-  //   '9-11 incident happened on September 11 1995?',
-  //   'An apple per day really keeps doctor away for whole year?',
-  // ];
-  // List<bool> answerResult = [
-  //   true,
-  //   false,
-  //   false,
-  //   true,
-  // ];
-
-  // List<Widget> txt = [
-  //   const Text(
-  //     'This is where my Question will be displayed',
-  //     textAlign: TextAlign.center,
-  //     style: TextStyle(
-  //       color: Colors.cyanAccent,
-  //       fontWeight: FontWeight.bold,
-  //       fontSize: 25.0,
-  //     ),
-  //   ),
-  // ];
-
-  QuesBrain questions = QuesBrain();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Expanded(
@@ -160,8 +125,6 @@ class _QuizPageState extends State<QuizPage> {
                 fontSize: 25.0,
               ),
             ),
-
-            // child: txt[0],
           ),
         ),
         Expanded(
